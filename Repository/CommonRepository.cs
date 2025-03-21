@@ -15,7 +15,7 @@ namespace UserMaster.Repository
                 obj.Add("@UMID", param.UMID);
                 obj.Add("@UM_UserName", param.UM_UserName);
                 obj.Add("@UM_Password", param.UM_Password);
-                DataTable dtResponse = GetDataTable("Sujit_UserMasterSelect", obj);
+                DataTable dtResponse = GetDataTable("IM_UserMasterSelect", obj);
                 return dtResponse;
             }
             catch (Exception ex)
@@ -36,7 +36,7 @@ namespace UserMaster.Repository
                 obj.Add("@UM_FName", param.UM_FName);
                 obj.Add("@UM_LName", param.UM_LName);
                 obj.Add("@UM_IpAddress", param.UM_IpAddress);
-                DataTable dtResponse = GetDataTable("Sujit_UserMasterInsertUpdate", obj);
+                DataTable dtResponse = GetDataTable("IM_UserMasterInsertUpdate", obj);
                 return dtResponse;
             }
             catch (Exception ex)
