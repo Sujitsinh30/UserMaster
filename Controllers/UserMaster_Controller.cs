@@ -35,7 +35,11 @@ namespace UserMaster.Controllers
                         {
                             res.status = 500;
                             res.message = "Verification file not found.";
-                            return StatusCode(500, res);
+                            return BadRequest(res);
+                        }
+                        using (StreamReader r = new StreamReader(path))
+                        {
+                            json = r.ReadToEnd();
                         }
                         dataTable = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
 
