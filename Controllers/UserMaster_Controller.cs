@@ -28,7 +28,7 @@ namespace UserMaster.Controllers
                     try
                     {
                         string json = "";
-                        using (StreamReader r = new StreamReader("JSON/UserMaster_VerifyCall.json"))
+                        using (StreamReader r = new StreamReader("JSON/UserMaster_VerifyCalll.json"))
                         {
                             json = r.ReadToEnd();
                         }
@@ -72,7 +72,7 @@ namespace UserMaster.Controllers
                 catch (Exception ex)
                 {
                     res.status = 500;
-                    res.message = "Unexpected Error Occurred";
+                    res.message = $"Unexpected Error Occurred{ex.Message}";
                     return BadRequest(res);
                 }
                 finally { }
