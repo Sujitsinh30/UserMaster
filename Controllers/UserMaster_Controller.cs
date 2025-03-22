@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Data;
 using System.Dynamic;
+using System.IO;
 using UserMaster.Model;
 using UserMaster.Service;
 
@@ -28,9 +29,13 @@ namespace UserMaster.Controllers
                     try
                     {
                         string json = "";
-                        using (StreamReader r = new StreamReader("JSON/UserMaster_VerifyCalll.json"))
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "JSON", "UserMaster_VerifyCall.json");
+
+                        if (!System.IO.File.Exists(path))
                         {
-                            json = r.ReadToEnd();
+                            res.status = 500;
+                            res.message = "Verification file not found.";
+                            return StatusCode(500, res);
                         }
                         dataTable = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
 
