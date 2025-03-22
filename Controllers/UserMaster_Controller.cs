@@ -100,10 +100,17 @@ namespace UserMaster.Controllers
                         string json = "";
 
                         string path = Path.Combine(Directory.GetCurrentDirectory(), "JSON", "UserMaster_VerifyCall.json");
+                        if (!System.IO.File.Exists(path))
+                        {
+                            res.status = 500;
+                            res.message = "Verification file not found.";
+                            return StatusCode(500, res);
+                        }
                         using (StreamReader r = new StreamReader(path))
                         {
                             json = r.ReadToEnd();
                         }
+                        
                         dataTable = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
 
                     }
