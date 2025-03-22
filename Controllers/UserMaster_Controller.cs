@@ -98,7 +98,9 @@ namespace UserMaster.Controllers
                     try
                     {
                         string json = "";
-                        using (StreamReader r = new StreamReader("JSON/UserMaster_VerifyCall.json"))
+
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "JSON", "UserMaster_VerifyCall.json");
+                        using (StreamReader r = new StreamReader(path))
                         {
                             json = r.ReadToEnd();
                         }
