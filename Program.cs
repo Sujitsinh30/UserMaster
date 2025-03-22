@@ -15,7 +15,7 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerUI(options =>
     {
