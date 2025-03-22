@@ -99,18 +99,10 @@ namespace UserMaster.Controllers
                     {
                         string json = "";
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "JSON", "UserMaster_VerifyCall.json");
-                        if (!System.IO.File.Exists(path))
-                        {
-                            res.status = 500;
-                            res.message = "Verification file not found.";
-                            return StatusCode(500, res);
-                        }
-                        using (StreamReader r = new StreamReader(path))
+                        using (StreamReader r = new StreamReader("JSON/UserMaster_VerifyCall.json"))
                         {
                             json = r.ReadToEnd();
                         }
-                        
                         dataTable = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
 
                     }
@@ -147,7 +139,7 @@ namespace UserMaster.Controllers
                 catch (Exception ex)
                 {
                     res.status = 500;
-                    res.message = "Unexpected Error Occurred";
+                    res.message = $"Unexpected Error Occurred:{ex.Message}";
                     return BadRequest(res);
                 }
                 finally { }
